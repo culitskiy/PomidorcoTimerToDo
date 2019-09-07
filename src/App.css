@@ -1,0 +1,13 @@
+.app{
+  display: flex;
+  justify-content: center;
+  padding-top: 20vw;
+  
+}
+.todo{
+  border:1px solid;
+  width: 50%;
+}
+body{
+  background-color: aquamarine;
+}

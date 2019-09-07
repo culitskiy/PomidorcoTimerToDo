@@ -1,0 +1,19 @@
+.icons{
+    color: green;
+    display: flex;
+    align-items: flex-end;
+}
+.far{
+    background-color: greenyellow;
+    border:2px solid; 
+}
+.fas{
+    background-color: greenyellow;
+    border:2px solid; 
+}
+.fas:hover{
+    color: red;
+}
+.far:hover{
+    color: red;
+}

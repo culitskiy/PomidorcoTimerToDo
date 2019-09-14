@@ -1,6 +1,5 @@
 import React from 'react';
 import './todoItem.css';
-import {Timer} from './timer/timer';
 import { Buttons } from './buttons/buttons';
 import { Pomidorka } from './pomidorka/pomidorka';
 
@@ -18,11 +17,11 @@ export const TodoItem = ({item}) => {
             </div>
             <div className='right'>
                 <div>
-                    <Timer item={item} />
-
+                   
+                    <Pomidorka item={item} />
                 </div>
                 <Buttons item={item} />
-                <Pomidorka item={item} />
+                
 
             </div>
 

@@ -4,29 +4,35 @@ import {Context} from '../../../../context';
 
 export const Buttons = ({item}) => {
 
-    const {id, timerActive} = item;
+    const {id} = item;
 
     const {dispatch, state} = useContext(Context);
 
     const onTimerPomidorka = () => {
 
-        if (state.every((item) => item.timerActive === false) ||
-            (timerActive === true)) {
+        if ((item.id === state[0].idTicket || state[0].idTicket === '') && state[0].timerRestActive === false) {
             dispatch({
                 type: 'timerActive',
                 payload: id
             });
+        } else if(item.id !== state[0].idTicket && state[0].timerRestActive === false){
+            dispatch({
+                type: 'timerActive',
+                payload: id,
+                newTimer: 25*60
+            });
         } else {
-            return alert("Сделай сначала то что начал!!!")
+            return ;
         }
+
     };
 
     const deleteItem = () => {
         dispatch({
             type: 'delete',
             payload: id
-        })
-    }
+        });
+    };
    
     const onCompleted = () => {
         
@@ -34,8 +40,7 @@ export const Buttons = ({item}) => {
                 type: 'completed',
                 payload: id
             });
-        
-    }
+    };
 
     return(
         

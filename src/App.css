@@ -1,11 +1,12 @@
 .app{
   display: flex;
   justify-content: center;
-  padding-top: 20vw;
+  
+  padding-top: 10vw;
   
 }
 .todo{
-  border:1px solid;
+  
   width: 50%;
 }
 body{

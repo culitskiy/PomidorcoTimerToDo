@@ -1,7 +1,5 @@
 
-
-
-export default function (state,action) {
+export default function (state ,action) {
     switch (action.type) {
         case 'add':
             return [
@@ -11,7 +9,6 @@ export default function (state,action) {
                     completed: false,
                     timerActive: false,
                     pomidorka: 0,
-                    timer: 0
                 }
             ];
         case 'delete':
@@ -35,31 +32,37 @@ export default function (state,action) {
             return [...newState2];
         case 'timerActive':
             let stateTimer = [...state];
-            stateTimer.map((item) => {
-                if (item.id === action.payload) {
-                    item.timerActive = !item.timerActive;
-                }
-                return stateTimer;
-            });
+           
+            stateTimer[0].timerActive = !stateTimer[0].timerActive;
+            stateTimer[0].idTicket = action.payload ? action.payload : stateTimer[0].idTicket;
+            stateTimer[0].timer = action.newTimer ? action.newTimer : stateTimer[0].timer;
             return [...stateTimer];
+        case 'timerRestActive':
+            let stateTimerRest = [...state];
+            
+            stateTimerRest[0].timerRestActive = !stateTimerRest[0].timerRestActive;
+            stateTimerRest[0].timerRest = action.newTimerRest ? action.newTimerRest : stateTimerRest[0].timerRest;
+            return [...stateTimerRest];    
         case 'timer':
             let timer = [...state];
-            timer.map((item) => {
-                if (item.id === action.payload) {
-                    item.timer = action.timer;
-                }
-                return timer;
-            });
+           
+            timer[0].timer-- ;
             return [...timer];
+        case 'timerRest':
+            let timerRest = [...state];
+            
+            timerRest[0].timerRest-- ;
+            return [...timerRest];
         case 'pomidorka':
             let pomidorka = [...state];
-            pomidorka.map((item) => {
-                if (item.id === action.payload) {
-                    item.pomidorka = item.pomidorka + 1;
+            pomidorka.map((item, index) => {
+                if (item.id === pomidorka[0].idTicket && index !== 0) {
+                    item.pomidorka++;
                 }
-                return pomidorka;
+                
             });
             return [...pomidorka];
+            
         default:
             return state;
     }

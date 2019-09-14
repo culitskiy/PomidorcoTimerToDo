@@ -7,10 +7,11 @@ export const TodoList = () => {
 
     const { state } = useContext(Context);
 
-    const items = state.map((item) => {
+    const items = state.map((item, id) => {
+        if(id !== 0){
         return(
             <TodoItem  item={item} key={`${new Date().getTime()}${item.title}`}/>
-        )
+        )}
     })
 
     return(
